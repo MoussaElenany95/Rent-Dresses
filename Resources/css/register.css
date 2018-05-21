@@ -1,0 +1,28 @@
+.blure{
+    height: 688px;
+    margin-top: 0;
+}
+.login-header{
+   margin-top: -124px;
+   margin-bottom: 60px;
+}
+.login-header h1 {
+    margin-top: 16px;
+    margin-bottom: -40px;
+    margin-left: -40px;
+}
+.blure form>.btn{
+    margin-top: -17px;
+    margin-left: 17%;
+    padding: 10px 0;
+}
+.register{
+    bottom: 8px;
+    left: 239px;
+}
+label{
+    font-weight: bold;
+}
+.blur-body{
+    height:689px
+}

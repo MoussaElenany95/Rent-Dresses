@@ -1,0 +1,39 @@
+
+.bg-body{
+    width: 100%;
+    margin-top: 0;
+    height: 680px;
+    position: fixed;
+    z-index: -1;
+    background:  #6f858e4f;
+    
+}
+img.img-bg{
+    position: fixed;
+    width: 100%;
+    margin-top: 0;
+    z-index: -2;
+    height: 629px;
+    
+}
+
+.blure {
+    margin-top: 1px;
+    background: #6f838ead;
+    padding-top: 148px;
+    height: 359px;
+    border-top: 7px solid #FFF;
+    box-shadow: 0px 8px 14px 3px #ffffff6e;
+    padding-left: 51px;
+    padding-right: 51px;
+
+}
+
+.login-header h1 {
+    margin-left: 0;
+    text-align: center;
+}
+
+.blure h1,label{
+    color: #fff;
+}

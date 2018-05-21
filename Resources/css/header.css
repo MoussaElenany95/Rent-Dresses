@@ -1,0 +1,91 @@
+a{
+    cursor: pointer;
+  }
+  header .container-fluid{
+    background: #fff;
+  }
+ header .navbar-brand img{
+    height: 35px;
+    margin-top: -5px;
+  }
+  header .img-blur{
+    width: 100%;
+    height: 100%;
+    background: #ff000021;
+    position: absolute;
+    z-index: -1;
+  }
+  header  img.bg-blur{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -2;
+  }
+  
+  header .form-search {
+    margin-left: 125px;
+  }
+  
+  header .form-search .search-btn {
+      padding: 8px;
+      font-size: 16px;
+      margin-left: -2px;
+  }
+  
+  header .form-search input.form-control{
+    width: 427px;
+  }
+  ul.links{
+    margin-left: 46px;
+  }
+  
+  header .navbar-default .navbar-nav>li>a {
+    color: #777;
+    font-weight: bold;
+  }
+  
+  header .navbar-default .navbar-nav>.active>a,
+  header .navbar-default .navbar-nav>.active>a:focus,
+  header  .navbar-default .navbar-nav>.active>a:hover{
+     background-color: #5d80a1ce;
+     color: #FFF;
+     font-weight: bold;
+   }
+  
+   header   .navbar-default ul.links>li>a:hover{color: #FFF}
+  
+   header .navbar-default ul.links>li:hover{
+     background-color: #5d80a1ce;
+     color: #FFF;
+     font-weight: bold;
+   }
+  
+   #login{
+    font-size: 16px;
+    color: #777;
+    background-color: #FFF;
+    border: 2px solid #777;
+    border-radius: 9px;
+    padding: 12px;
+  }
+  
+  #login:hover{
+    background: #5d80a1ce;
+    color: #FFF;
+    border: 2px solid #5d80a1ce;
+    border-radius: 9px;
+    
+  }
+  
+  .navbar{
+    margin-bottom: -7px;
+    border: 0
+  }
+
+  #logo{
+    position: relative;
+    top: -40px;
+    left: 60px;
+    display: block;
+    width: 115px;
+  }
