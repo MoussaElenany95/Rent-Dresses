@@ -12,18 +12,20 @@ class UserController extends  DataBase
 
     //login for user
     public function login($username, $password){
-        $productive = "SELECT * FROM users WHERE  email = '$username'  AND  password = '$password' LIMIT 1";
+        $user = "SELECT * FROM users WHERE  email = '$username'  LIMIT 1";
+        $userQuery = mysqli_query($this->db, $user);
 
-        $data = NULL;
-        $productiveQuery = mysqli_query($this->db, $productive);
-        if ($productiveQuery->num_rows > 0) {
+        if ($userQuery->num_rows > 0) {
 
-            $data = $productiveQuery->fetch_assoc();
+             $data = $userQuery->fetch_assoc();
+             if (password_verify($password,$data['password'])){
+
+                 return $data;
+             }
 
         }
-        return $data;
 
-
+        return NULL;
     }
 
     //sign up
@@ -33,7 +35,7 @@ class UserController extends  DataBase
         $name           = $data['name'];
         $email          = $data['email'];
         $telephone      = $data['telephone'];
-        $password       = $data['password'];
+        $password       = password_hash($data['password'],PASSWORD_BCRYPT);
         //if user already exist
         if (!$this->searchForUser($email)){
 
@@ -86,7 +88,7 @@ class UserController extends  DataBase
         $name      = $data['name'];
         $email     = $data['email'];
         $telephone = $data['telephone'];
-        $password  = $data['password'];
+        $password  = password_hash($data['password'],PASSWORD_BCRYPT);
 
         if (!$this->searchForAnotherEmail($email,$data['oldemail'])){
             $update = "UPDATE users SET name = '$name' , email = '$email',password = '$password' ,phone = '$telephone'";

@@ -47,7 +47,7 @@
 </head>
 <body>
 <?php
-include "header.php";
+    include "header.php";
 ?>
 <div class="contents">
     <div class="container loginblock">
@@ -78,7 +78,7 @@ include "header.php";
                                     </div>
                                     <div class="form-group">
                                         <label class="text-primary">password</label>
-                                        <input type="text" value="<?php echo $userInfo['password'];?>" name="password" id="register_password" tabindex="2" class="form-control" placeholder="Enter Password">
+                                        <input type="password" value="##$ggg@1444" name="password" id="register_password" tabindex="2" class="form-control" placeholder="Enter Password">
                                         <span id="password_feedback"></span>
                                     </div>
                                     <div class="form-group">
@@ -100,7 +100,6 @@ include "header.php";
             </div>
         </div>
     </div>
-</div>
 </div>
 <script src="../Resources/js/profile.js"></script>
 </body>

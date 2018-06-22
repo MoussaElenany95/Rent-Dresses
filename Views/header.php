@@ -20,10 +20,8 @@
 
                         }
                         echo "<li class=\"\"><a href=\"questions_answers.php\"> Questions </a> </li>";
+                        echo "<li><a href='contactUs.php'>Contact us</a></li>";
 
-                        if (!isset($_SESSION['username'])){
-                            echo "<li><a href='contactUs.php'>Contact us</a></li>";
-                        }
                     ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
