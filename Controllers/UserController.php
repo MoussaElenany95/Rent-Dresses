@@ -216,7 +216,7 @@ class UserController extends  DataBase
     //live search products
     public function liveSearchProducts($search){
 
-        $product = "SELECT name FROM product WHERE name LIKE '%$search%' LIMIT 10";
+        $product = "SELECT name FROM product WHERE LOWER(name) LIKE '%$search%' LIMIT 10";
 
         $query =  mysqli_query($this->db,$product);
 
@@ -225,7 +225,7 @@ class UserController extends  DataBase
     //search for products
     public  function searchForProducts($search){
 
-        $product = "SELECT * FROM product WHERE name LIKE '$search%'";
+        $product = "SELECT * FROM product WHERE LOWER(name) LIKE '$search%'";
 
         $query =  mysqli_query($this->db,$product);
 

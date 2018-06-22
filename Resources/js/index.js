@@ -1,16 +1,4 @@
 $(function () {
-    window.onbeforeunload = function() {
-        localStorage.setItem("search", $('#search-input').val());
-    };
-
-    window.onload = function() {
-
-        var searchVal = localStorage.getItem("search");
-        $('#search-input').val(searchVal);
-
-
-    };
-
     $(".movie-image").click(function (event) {
 
             var source = $(this).find("img").attr("src");
@@ -60,12 +48,12 @@ $(function () {
     });
     //live search
     $("#search-input").on("keyup",function () {
-        var search = $(this).val();
+        var search = $(this).val().toLowerCase();
         searchValues(search);
 
     });
     $("#search-input").on("focus",function () {
-        var search = $(this).val();
+        var search = $(this).val().toLowerCase();
         searchValues(search);
 
     });
