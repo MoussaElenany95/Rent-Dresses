@@ -1,13 +1,12 @@
 $(function () {
     window.onbeforeunload = function() {
-        localStorage.setItem("username", $('#username').val());
+        sessionStorage.setItem("username", $('#username').val());
     };
 
-    window.onload = function() {
 
-        var username = localStorage.getItem("username");
+    if (typeof(Storage) !== "undefined") {
+
+        var username = sessionStorage.getItem("username");
         $('#username').val(username);
-
-    };
-
+    }
 });

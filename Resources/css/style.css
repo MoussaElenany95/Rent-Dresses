@@ -46,6 +46,7 @@ body {
 	position: fixed;
 	z-index: 10;
 	width: 100%;
+	text-align: center;
 	display: none;
 	padding: 50px ;
 	height: 100%;
@@ -53,9 +54,10 @@ body {
 }
 .details{
 	padding: 20px;
-	width: 50%;
+	text-align: center;
+	display: inline-block;
+	min-width: 50%;
 	min-height: 90%;
-	margin: 0 auto;
 	font-size: 20px;
 	font-family:"DejaVu Sans Mono";
 	background-color: white;
@@ -80,8 +82,12 @@ body {
 	font-weight: bold;
 	display: none;
 }
+table{
+	text-align: left;
+}
 table tr td{
 	padding-left: 20px;
+	min-width: 350px;
 }
 #desc{
 	resize: none;
