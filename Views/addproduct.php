@@ -69,7 +69,7 @@ include "header.php";
 
                                     <div class="form-group">
                                         <label class="text-primary" for="product_desc">Product description : </label>
-                                        <textarea  name="desc" id="product_desc"  class="form-control" placeholder="Description"></textarea>
+                                        <textarea  name="dsc" id="product_desc"  class="form-control" placeholder="Description"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">

@@ -59,7 +59,7 @@
         $data['type']  = $_POST['type'];
         $data['img']   = $_FILES['img'];
         $data['price'] = $_POST['price'];
-
+        $data['dsc']   = $_POST['dsc'];
        $msg = $user->addProduct($data);
        header("Location:../Views/addproduct.php?error=$msg");
      }
@@ -68,6 +68,7 @@
     if (isset($_POST['update-product'])){
         $data['id']     = $_POST['id'];
         $data['name']   = $_POST['name'];
+        $data['dsc']    = $_POST['dsc'];
 
         if (!$_FILES['img']['error']){
 

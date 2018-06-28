@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="text-primary" >Description</label>
-                                        <textarea class="form-control"></textarea>
+                                        <textarea name="dsc" class="form-control"></textarea>
                                     </div>
                                         <input type="hidden" value="<?php echo $product['img']?>" name="oldimg">
                                     <div class="form-group">

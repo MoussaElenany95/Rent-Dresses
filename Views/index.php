@@ -26,9 +26,12 @@
 
     $search_hint = "";
     if (isset($_GET['search'])){
+
         $search = $_GET['search'];
         $search_hint = '<h3 class="text-primary">Search results "'.$search.'" : </h3>';
         $products = $user->searchForProducts($search);
+        $numberOfPages = 0;
+
     }else{
 
         $products = $user->getAllProducts($page_1);
@@ -59,11 +62,11 @@
             <tr>
                 <td id="price"></td>
             </tr>
+
             <tr>
-                <td>
-                    <button class="btn" id="order-btn">Order now</button>
-                </td>
+                <td id="desc"></td>
             </tr>
+
         </table>
     </div>
 
@@ -84,7 +87,9 @@
                            <div class=\"movie-image\">
                                <span><div class='show-details'>Show details</div><img src=\"{$product['img']}\"></span>
                                 <span class='name'>{$product['name']}</span>
-                                <span class='price'>{$product['price']} SAR</span></div>
+                                <span class='price'>{$product['price']} SAR</span>
+                                <textarea class='desc' hidden>{$product['dsc']}</textarea>
+                                </div>
                                ";
                         if (isset($_SESSION['username'])){
                             echo "<button onclick=\"location.href ='update_product.php?id={$product['id']}'\" class=\"btn-primary btn\">Edit</button> <button data-toggle=\"modal\" data-target=\"#$ID\" class=\"btn-primary btn\">Delete</button>";

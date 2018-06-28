@@ -114,7 +114,7 @@ class UserController extends  DataBase
 
     //Add product
     public  function addProduct($data){
-        $target_dir = "../uploads/";
+        $target_dir = "../uploads/products";
         $target_file = $target_dir.round(microtime(true)) . basename($data['img']['name']);
         $FileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -128,7 +128,7 @@ class UserController extends  DataBase
         //upload
         if (move_uploaded_file($data['img']["tmp_name"], $target_file)) {
 
-            $addProduct =  "INSERT INTO product (name,img,price) VALUES ('{$data['name']}','$target_file','{$data['price']}')";
+            $addProduct =  "INSERT INTO product (name,img,price,dsc) VALUES ('{$data['name']}','$target_file','{$data['price']}',{$data['dsc']})";
             mysqli_query($this->db,$addProduct);
             return "Product is added successfully";
         } else {
@@ -169,7 +169,7 @@ class UserController extends  DataBase
                 unlink($data['oldimg']);
             }
 
-            $target_dir = "../uploads/";
+            $target_dir = "../uploads/products/";
             $target_file = $target_dir.round(microtime(true)) . basename($data['img']['name']);
             $FileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -185,7 +185,7 @@ class UserController extends  DataBase
             //upload
             if (move_uploaded_file($data['img']["tmp_name"], $target_file)) {
 
-                $addProduct =  "UPDATE product set name = '{$data['name']}',img ='$target_file' ,price ='{$data['price']}' WHERE id = {$data['id']}";
+                $addProduct =  "UPDATE product set name = '{$data['name']}',img ='$target_file' ,price ='{$data['price']}', dsc='{$data['dsc']}' WHERE id = {$data['id']}";
                 mysqli_query($this->db,$addProduct);
                 return "Product is updated successfully";
             } else {
@@ -193,7 +193,7 @@ class UserController extends  DataBase
             }
         }
 
-        $addProduct =  "UPDATE product set name = '{$data['name']}',price ='{$data['price']}' WHERE id = {$data['id']}";
+        $addProduct =  "UPDATE product set name = '{$data['name']}',price ='{$data['price']}' ,dsc = '{$data['dsc']}' WHERE id = {$data['id']}";
 
         mysqli_query($this->db,$addProduct);
 
@@ -238,7 +238,7 @@ class UserController extends  DataBase
     //search for products
     public  function searchForProducts($search){
 
-        $product = "SELECT * FROM product WHERE LOWER(name) LIKE '$search%'";
+        $product = "SELECT * FROM product WHERE LOWER (name) LIKE LOWER ('%$search%')";
 
         $query =  mysqli_query($this->db,$product);
 

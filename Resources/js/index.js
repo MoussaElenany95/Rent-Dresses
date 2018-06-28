@@ -4,15 +4,18 @@ $(function () {
             var source = $(this).find("img").attr("src");
             var name   = $(this).find(".name").text();
             var price  = $(this).find(".price").text();
+            var desc   = $(this).find(".desc").text();
             var link   = $(this).find("button").attr("onclick");
             $(".light-box img").attr("src",source);
             $(".light-box #name").html("<b>Name :</b> "+ name);
             $(".light-box #price").html("<b>Price :</b> "+ price);
+            $(".light-box #desc").html("<b>Description :</b> "+ desc);
             $(".light-box #order-btn").attr("onclick",link);
             $(".light-box").stop().slideDown();
 
 
     });
+
     $(".movie-image").hover(function () {
          $(this).find(".show-details").stop().slideDown();
      },function () {
