@@ -5,7 +5,7 @@
 }
 html{
 	height: auto;
-
+	width: auto;
 }
 body {
 	font-size:12px;
@@ -107,16 +107,14 @@ table tr td{
 
 }
 #content{
-	margin-left: 10%;
 	margin-top: 200px;
-
 }
 .box .movie {
 	width:152px;
 	float:left;
 	text-align: center;
 	padding-right:12px;
-	margin-right: 20px;
+	margin-right: 10px;
 	margin-bottom: 50px;
 }
 .movie-image {
@@ -146,4 +144,8 @@ table tr td{
 	font-size:14px;
 	text-align:center;
 	display:block;
+}
+.pages{
+	text-align: center;
+	width: 100%;
 }

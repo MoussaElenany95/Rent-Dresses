@@ -1,7 +1,28 @@
 <?php
     session_start();
     include "../Controllers/UserController.php";
+
     $user     = new UserController();
+    //get number of pages
+    $numberOfPages = ceil($user->countProducts()/7);
+
+    if (isset($_GET['page'])){
+
+        $page = $_GET['page'];
+        if (!filter_var($page,FILTER_VALIDATE_INT) || $page > $numberOfPages || $page < 1){
+            die(http_response_code(404));
+        }
+    }else{
+        $page  = 0;
+    }
+
+    if ($page == "" || $page == 1){
+
+        $page_1 = 0;
+
+    }else{
+        $page_1 = ( $page * 7 ) - 7;
+    }
 
     $search_hint = "";
     if (isset($_GET['search'])){
@@ -10,7 +31,7 @@
         $products = $user->searchForProducts($search);
     }else{
 
-        $products = $user->getAllProducts();
+        $products = $user->getAllProducts($page_1);
 
     }
 ?>
@@ -52,10 +73,10 @@
             <h1>Welcome</h1>
             <h3>Here there are beautiful dresses </h3>
         </div>
-
-        <div id="content">
-            <div class="box">
-                <?php
+        <div class="container">
+            <div id="content">
+                <div class="box">
+                    <?php
                     echo $search_hint;
                     $ID = 0;
                     while ($product = $products->fetch_assoc()){
@@ -65,11 +86,11 @@
                                 <span class='name'>{$product['name']}</span>
                                 <span class='price'>{$product['price']} SAR</span></div>
                                ";
-                            if (isset($_SESSION['username'])){
-                                echo "<button onclick=\"location.href ='update_product.php?id={$product['id']}'\" class=\"btn-primary btn\">Edit</button> <button data-toggle=\"modal\" data-target=\"#$ID\" class=\"btn-primary btn\">Delete</button>";
-                            }else{
-                                echo "<button onclick=\"location.href = 'make_order.php?id={$product['id']}&price={$product['price']}'\" class=\"btn - primary btn\">Order now</button>";
-                            }
+                        if (isset($_SESSION['username'])){
+                            echo "<button onclick=\"location.href ='update_product.php?id={$product['id']}'\" class=\"btn-primary btn\">Edit</button> <button data-toggle=\"modal\" data-target=\"#$ID\" class=\"btn-primary btn\">Delete</button>";
+                        }else{
+                            echo "<button onclick=\"location.href = 'make_order.php?id={$product['id']}&price={$product['price']}'\" class=\"btn - primary btn\">Order now</button>";
+                        }
                         echo "</div>";
                         echo " <div class=\"modal fade\" id=\"$ID\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">
                                     <div class=\"modal-dialog\" role=\"document\">
@@ -88,12 +109,34 @@
                                         </div>
                                      </div>
                                 </div></div>";
-                            $ID++;
+                        $ID++;
                     }
-                ?>
+                    ?>
 
+                </div>
             </div>
         </div>
+
+        <div class="pages">
+            <nav>
+                <ul class="pagination">
+                   <?php
+                        for ($i = 1 ; $i <= $numberOfPages ; $i++){
+                            if ($i == $page){
+                                echo "<li class=\"page-item active\"><a class=\"page-link\" href=\"?page={$i}\">$i</a></li>";
+
+                            }else{
+                                echo "<li class=\"page-item \"><a class=\"page-link\" href=\"?page={$i}\">$i</a></li>";
+
+                            }
+
+                        }
+                   ?>
+
+                </ul>
+            </nav>
+        </div>
+
 <script src="../Resources/js/jquery.min.js"></script>
 <script src="../Resources/js/index.js"></script>
 <script src="../Resources/js/bootstrap.min.js"></script>

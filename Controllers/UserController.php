@@ -76,9 +76,20 @@ class UserController extends  DataBase
         return false;
 
     }
+    //count number of products
+    public function countProducts(){
+
+        $count = "SELECT COUNT(id) AS numberOfProducts from product";
+        $query = mysqli_query($this->db,$count);
+
+        $numberOfProducts = $query->fetch_assoc();
+
+        return $numberOfProducts['numberOfProducts'];
+
+    }
     //get all products
-    public  function getAllProducts(){
-        $products = "SELECT * FROM product";
+    public  function getAllProducts($page){
+        $products = "SELECT * FROM product ORDER BY uploaded_at DESC LIMIT $page,7 ";
         $query = mysqli_query($this->db,$products);
         return $query;
     }
